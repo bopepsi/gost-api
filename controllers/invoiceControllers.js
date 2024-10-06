@@ -35,8 +35,8 @@ const getInvoices = async (req, res) => {
 
         // If the user is not an admin, they can only retrieve their own invoices
         let query;
-        if (req.body.role === 'admin') {
-            query = `SELECT TOP 20 * FROM brdrch.dbo.invoices order by invoice_date order by invoice_date DESC`; // Admins get all invoices
+        if (req.body.role == 'admin') {
+            query = `SELECT TOP 20 * FROM brdrch.dbo.invoices order by invoice_date DESC`; // Admins get all invoices
         } else {
             query = `SELECT TOP 20 * FROM brdrch.dbo.invoices WHERE vendor_name = '${req.body.name}' order by invoice_date DESC`; // Standard users get only their own invoices
         }
