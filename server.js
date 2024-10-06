@@ -15,7 +15,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
+app.use(express.static('public'));
+
 // Routes
+
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
+
 app.use('/api/auth', authRoutes); // User login/signup routes
 app.use('/api/invoices', invoiceRoutes); // CRUD routes for invoices
 
