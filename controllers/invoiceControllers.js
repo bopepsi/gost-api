@@ -49,13 +49,13 @@ const getInvoices = async (req, res) => {
 };
 
 const getInvoiceByID = async (req, res) => {
-    const { inv_id } = req.params; // Extract invoice_ref from request params
-
+    const { invoice_id } = req.params; // Extract invoice_ref from request params
+    
     try {
         const pool = await poolPromise;
 
         // Query to retrieve the specific invoice by its invoice_ref
-        const query = `SELECT * FROM brdrch.dbo.invoices WHERE ID = '${inv_id}'`;
+        const query = `SELECT * FROM brdrch.dbo.invoices WHERE ID = '${invoice_id}'`;
 
         const result = await pool.request().query(query);
 

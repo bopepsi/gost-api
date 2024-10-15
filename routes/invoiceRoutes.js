@@ -17,6 +17,6 @@ router.put('/update/:invoice_ref', verifyToken, updateInvoice);
 router.delete('/delete/:invoice_ref', verifyToken, deleteInvoice);
 
 // 5. Get One Invoice (Admin can get all; Standard user can only get their own)
-router.get('/:invoice_ref', getInvoiceByID);
+router.get('/:invoice_id', getInvoiceByID);
 
 module.exports = router;
