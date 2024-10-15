@@ -48,14 +48,14 @@ const getInvoices = async (req, res) => {
     }
 };
 
-const getInvoiceByRef = async (req, res) => {
-    const { invoice_ref } = req.params; // Extract invoice_ref from request params
+const getInvoiceByID = async (req, res) => {
+    const { inv_id } = req.params; // Extract invoice_ref from request params
 
     try {
         const pool = await poolPromise;
 
         // Query to retrieve the specific invoice by its invoice_ref
-        const query = `SELECT * FROM brdrch.dbo.invoices WHERE invoice_ref = '${invoice_ref}'`;
+        const query = `SELECT * FROM brdrch.dbo.invoices WHERE ID = '${inv_id}'`;
 
         const result = await pool.request().query(query);
 
@@ -149,7 +149,7 @@ const deleteInvoice = async (req, res) => {
 module.exports = {
     createInvoice,
     getInvoices,
-    getInvoiceByRef,
+    getInvoiceByID,
     updateInvoice,
     deleteInvoice
 };

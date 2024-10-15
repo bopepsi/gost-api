@@ -1,7 +1,7 @@
 // routes/invoiceRoutes.js
 const express = require('express');
 const { verifyToken, isAdmin } = require('../middlewares/authMiddleware');
-const { createInvoice, getInvoices, updateInvoice, deleteInvoice, getInvoiceByRef } = require('../controllers/invoiceControllers');
+const { createInvoice, getInvoices, updateInvoice, deleteInvoice, getInvoiceByID } = require('../controllers/invoiceControllers');
 const router = express.Router();
 
 // 1. Create an Invoice (Admin or Standard user can create for themselves)
@@ -17,6 +17,6 @@ router.put('/update/:invoice_ref', verifyToken, updateInvoice);
 router.delete('/delete/:invoice_ref', verifyToken, deleteInvoice);
 
 // 5. Get One Invoice (Admin can get all; Standard user can only get their own)
-router.get('/:invoice_ref', getInvoiceByRef);
+router.get('/:invoice_ref', getInvoiceByID);
 
 module.exports = router;
